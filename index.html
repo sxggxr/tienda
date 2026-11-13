@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DiseñoWeb MX – Te creo tu página web</title>
+<meta name="theme-color" content="#2bb3a6">
+<meta name="description" content="Páginas web, tiendas en línea e invitaciones digitales en México. Cotiza por WhatsApp.">
+<meta property="og:title" content="DiseñoWeb MX – Te creo tu página web">
+<meta property="og:description" content="Páginas web, tiendas, invitaciones y lo que necesites.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 56 18v28L32 60 8 46V18Z' fill='%2314a88f'/%3E%3Cpath d='M32 4 56 18 32 32 8 18Z' fill='%237bd45a'/%3E%3Cpath d='M8 18 32 32v28L8 46Z' fill='%231d8fd1'/%3E%3Cpath d='M56 18 32 32v28l24-14Z' fill='%230b7d77'/%3E%3Cpath d='M32 20 44 27v14L32 48 20 41V27Z' fill='%23fff'/%3E%3Cpath d='M32 26 38 29.5v7L32 40 26 36.5v-7Z' fill='%23f6a23c'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600&family=Fredoka:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,900&display=swap' rel='stylesheet'>
+<style>
+:root{--bg:#f7faf9;--ink:#10231f;--muted:#4a5f5a;--teal:#0f8f86;--green:#1f9d4d;--glass:rgba(255,255,255,.55);--glass-b:rgba(255,255,255,.75);--shadow:0 10px 30px rgba(20,80,70,.15);--pink:#fbb9a8;--yellow:#fcdc9a;--blue:#b4d6f0;--lime:#a9db8c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1715;--ink:#eaf6f3;--muted:#a3bbb5;--glass:rgba(20,40,37,.5);--glass-b:rgba(255,255,255,.14);--shadow:0 10px 30px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#0b1715;--ink:#eaf6f3;--muted:#a3bbb5;--glass:rgba(20,40,37,.5);--glass-b:rgba(255,255,255,.14);--shadow:0 10px 30px rgba(0,0,0,.4)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(88px + env(safe-area-inset-top,0px))}
+body{font-family:Outfit,-apple-system,"SF Pro Display",system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.glass{background:var(--glass);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid var(--glass-b);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.6)}
+header{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:min(1100px,calc(100% - 24px));z-index:20;border-radius:28px;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:26px;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
+.logo b{color:var(--teal);font-weight:700}.logo svg{width:38px;height:38px}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:17px}
+nav a:hover{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:600;color:#fff;background:linear-gradient(180deg,#2cb85f,#1a8f45);border-radius:999px;padding:12px 22px;text-decoration:none;box-shadow:0 8px 20px rgba(31,157,77,.35),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px) scale(1.02)}.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btn.ghost{background:var(--glass);color:var(--ink);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--glass-b)}
+.burger{display:none;background:none;border:0;cursor:pointer;width:40px;height:40px;padding:8px}
+.burger span{display:block;height:3px;border-radius:3px;background:var(--green);margin:6px 0;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+.sheet{position:fixed;top:calc(78px + env(safe-area-inset-top,0px));left:12px;right:12px;z-index:19;border-radius:26px;padding:18px;display:grid;gap:6px;opacity:0;pointer-events:none;transform:translateY(-14px) scale(.97);transition:.3s cubic-bezier(.2,.9,.3,1.2)}
+.sheet.open{opacity:1;pointer-events:auto;transform:none}
+.sheet a{padding:14px;border-radius:16px;text-decoration:none;color:var(--ink);font-weight:600;font-size:18px}
+.sheet a:active{background:var(--glass-b)}
+.hero{position:relative;padding:150px 20px 70px;text-align:center;overflow:hidden;background:radial-gradient(circle at 15% 80%,#fbb4a0 0,transparent 30%),radial-gradient(circle at 90% 90%,#fde3a0 0,transparent 30%),linear-gradient(135deg,#7fd6c9,#a8dde8 55%,#c7e8d8)}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);animation:float 8s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-18px)}}
+.hlogo{width:88px;height:88px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.25));animation:float 6s ease-in-out infinite}
+.hero h1{font-size:clamp(40px,7vw,76px);font-weight:700;color:#0e8a80;letter-spacing:-2px;line-height:1.05}
+.hero p{font-size:clamp(17px,2.4vw,26px);margin:14px 0 28px;font-weight:500;color:#10231f}
+.hero .btn{font-size:clamp(17px,2.4vw,24px);padding:16px 34px;border-radius:18px}
+.checks{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 26px;margin-top:26px;font-size:17px;font-weight:500;color:#10231f}
+.checks span{display:flex;align-items:center;gap:7px}.checks svg{width:20px;height:20px;stroke:#0e8a80;fill:none;stroke-width:2}
+section{padding:56px 20px 10px;max-width:1100px;margin:auto}
+h2{text-align:center;font-size:clamp(28px,4vw,38px);font-weight:700;margin-bottom:26px;position:relative;letter-spacing:-.5px}
+h2::after{content:"";display:block;width:70px;height:4px;border-radius:4px;background:var(--green);margin:6px auto 0}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{border:0;font:inherit;color:#10231f;text-align:center;padding:26px 16px;border-radius:26px;cursor:pointer;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.6);transition:transform .25s cubic-bezier(.2,.9,.3,1.3)}
+.card:hover{transform:translateY(-6px) scale(1.02)}.card:active{transform:scale(.97)}
+.card svg{width:54px;height:54px;stroke:#10231f;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
+.card h3{font-size:20px;font-weight:600}.card p{font-size:14.5px;margin-top:6px;line-height:1.35}
+.c1{background:var(--pink)}.c2{background:var(--yellow)}.c3{background:var(--blue)}.c4{background:var(--lime)}.c5{background:#f6c9e0}.c6{background:#c9d9f8}.c7{background:#d7c8f2}.c8{background:#ffd3b0}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{border-radius:26px;padding:26px 24px;position:relative;display:flex;flex-direction:column;gap:6px}
+.plan.pop{outline:3px solid var(--green);outline-offset:-3px}
+.tag{position:absolute;top:-13px;right:22px;background:var(--green);color:#fff;font-size:13px;font-weight:600;padding:4px 12px;border-radius:999px}
+.plan h3{font-size:26px}.price{color:var(--teal);font-size:28px;font-weight:700}
+.plan ul{list-style:none;padding:0;margin:8px 0 18px;display:grid;gap:7px;color:var(--muted);font-size:16px;flex:1}
+.plan li::before{content:"✓ ";color:var(--green);font-weight:700}
+.port{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.work{border-radius:24px;overflow:hidden;cursor:pointer;border:0;font:inherit;color:var(--ink);text-align:left;padding:0;transition:transform .25s}
+.work:hover{transform:translateY(-5px)}
+.shot{height:170px;display:grid;place-items:center;font-size:64px}
+.work div.t{padding:12px 16px}.work b{display:block;font-size:18px}.work small{color:var(--muted);font-size:14px}
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.box{border-radius:26px;padding:26px}
+form{display:grid;gap:12px}
+label{font-weight:600;font-size:15px}
+input,select,textarea{width:100%;font:inherit;padding:13px 16px;border-radius:16px;border:1px solid var(--glass-b);background:var(--glass-b);color:var(--ink);margin-top:5px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,143,134,.25)}
+.wa{background:linear-gradient(135deg,#59c9c0,#3aa8b5);color:#fff}
+.wa h3{font-size:24px;margin-bottom:8px}.wa p{margin-bottom:18px;line-height:1.4}
+.wa .btn{background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.6)}
+footer{text-align:center;color:var(--muted);padding:40px 20px 110px;font-size:15px}
+.dock{display:none;position:fixed;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:20;border-radius:999px;padding:8px 10px;gap:4px}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 14px;border-radius:999px}
+.dock a span{font-size:20px}.dock a.on{background:var(--glass-b);color:var(--teal)}
+.modal{position:fixed;inset:0;z-index:40;display:grid;place-items:end center;background:rgba(10,30,28,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:.3s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal .panel{width:min(520px,100%);border-radius:30px 30px 0 0;padding:28px 24px calc(28px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:.4s cubic-bezier(.2,.9,.3,1.1);background:var(--bg)}
+.modal.open .panel{transform:none}
+.panel h3{font-size:28px;margin-bottom:8px}.panel p{color:var(--muted);line-height:1.5;margin-bottom:14px}.panel ul{padding-left:20px;margin-bottom:18px;display:grid;gap:6px}
+.panel .row{display:flex;gap:10px;flex-wrap:wrap}
+@media(min-width:760px){.modal{place-items:center}.modal .panel{border-radius:30px}}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,30px);opacity:0;z-index:50;padding:12px 20px;border-radius:999px;transition:.35s;font-weight:600}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:860px){
+nav{display:none}.burger{display:block}header .btn.cot{display:none}
+.grid4{grid-template-columns:1fr 1fr}.plans,.port,.contact{grid-template-columns:1fr}
+.dock{display:flex}.hero{padding-top:130px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.proj{position:fixed;inset:0;z-index:30;overflow:auto;background:var(--bg);transform:translateY(100%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.9,.3,1.05),visibility .45s;padding-bottom:50px}
+.proj.open{transform:none;visibility:visible}
+.pbar{position:sticky;top:calc(8px + env(safe-area-inset-top,0px));z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;margin:8px 10px;border-radius:24px}
+.pbar b{font-size:18px}.pbar .btn{padding:9px 16px;font-size:15px}
+.phero{margin:0 10px;border-radius:30px;padding:54px 22px;text-align:center;color:#10231f}
+.phero .em{font-size:72px}.phero h1{font-size:clamp(32px,6vw,56px);letter-spacing:-1.5px;margin:6px 0}.phero p{max-width:560px;margin:0 auto 20px;font-size:19px}.phero small{font-weight:600;opacity:.7}
+.pbody{max-width:1000px;margin:auto;padding:6px 20px}.pbody h3{font-size:24px;margin:30px 0 14px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.pi{border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:6px}.pi .em{font-size:40px}.pi .pr{color:var(--teal);font-weight:700;font-size:20px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chips span{padding:9px 16px;border-radius:999px;font-weight:600}
+.cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.cd div{padding:14px 18px;border-radius:20px;text-align:center;min-width:78px}.cd b{display:block;font-size:30px}
+.info{border-radius:22px;padding:18px 22px;margin-top:22px;line-height:1.5}
+.cta{border-radius:30px;padding:30px;margin-top:34px;text-align:center}.cta h3{margin-top:0!important}.cta .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{border-radius:24px;padding:22px}.step i{font-style:normal;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;margin-bottom:10px}.step p{color:var(--muted);margin-top:6px;line-height:1.4}
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.test{border-radius:24px;padding:22px;line-height:1.5}.test b{display:block;margin-top:10px}
+details{border-radius:20px;padding:16px 20px;margin-bottom:12px;cursor:pointer}summary{font-weight:600;font-size:18px}details p{color:var(--muted);margin-top:10px;line-height:1.5}
+@media(max-width:860px){.steps,.tests{grid-template-columns:1fr 1fr}}@media(max-width:560px){.steps,.tests{grid-template-columns:1fr}}
+.proj{--ac:#1f9d4d}
+.proj .btn:not(.ghost){background:var(--ac);color:var(--on,#fff);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.proj h2::after{display:none}.proj h2{margin:26px 0 14px;text-align:left}
+.proj{color:var(--ink)}.pw{max-width:1000px;margin:auto;padding:10px 20px 20px}
+.t-cafeteria{--bg:#33241a;--ink:#f6ead8;--muted:#cdb89c;--ac:#e8a24a;--on:#2a1a0e;--glass:rgba(255,235,205,.1);--glass-b:rgba(255,235,205,.25);font:500 22px Caveat,Outfit,sans-serif;background:repeating-linear-gradient(45deg,#33241a 0 14px,#37281d 14px 28px)}
+.cf-hero{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:20px;padding:30px 0}
+.cf-hero h1{font-size:clamp(54px,9vw,96px);line-height:.95}.cf-hero p{font-size:28px;color:var(--muted);margin:10px 0 18px}
+.cup{position:relative;font-size:min(34vw,210px);text-align:center;animation:bob 4s ease-in-out infinite}
+.cup i{position:absolute;top:0;left:42%;width:10px;height:50px;border-radius:10px;background:rgba(255,255,255,.45);filter:blur(5px);animation:steam 2.4s infinite}.cup i:nth-child(2){left:52%;animation-delay:.8s}.cup i:nth-child(3){left:47%;animation-delay:1.6s}
+@keyframes steam{0%{opacity:0;transform:translateY(30px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-40px) scaleX(2)}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+.cf-board{background:#1f2a24;border:10px solid #8a5a2b;border-radius:14px;padding:22px 30px;box-shadow:inset 0 0 40px rgba(0,0,0,.5)}
+.cf-board h2{text-align:center;font-size:46px}
+.cf-row{display:flex;align-items:baseline;gap:8px;font-size:32px;padding:6px 0}.cf-row u{flex:1;border-bottom:3px dotted rgba(255,255,255,.4)}.cf-row b{color:var(--ac)}
+.cf-info{margin:22px 0;text-align:center;font-size:26px;color:var(--muted)}
+.t-boutique{--bg:#f4f1ec;--ink:#111;--muted:#666;--ac:#111;--glass:rgba(255,255,255,.75);--glass-b:rgba(0,0,0,.12);background:#f4f1ec;font-family:'Playfair Display',serif}
+.bq-top{overflow:hidden;white-space:nowrap;background:#111;color:#f4f1ec;padding:9px 0;font:600 13px Outfit;letter-spacing:3px}.bq-top span{display:inline-block;animation:mq 20s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.bq-h{font-size:clamp(56px,13vw,150px);font-weight:900;font-style:italic;line-height:.9;padding:30px 20px 0;max-width:1100px;margin:auto}
+.bq-s{max-width:1100px;margin:8px auto 24px;padding:0 20px;font:400 20px Outfit;color:var(--muted)}
+.bq-grid{max-width:1100px;margin:auto;padding:0 20px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+.bq-card{padding:16px;background:#fff;display:grid;gap:8px}.bq-card:nth-child(even){margin-top:40px}
+.bq-card span{display:grid;place-items:center;height:190px;font-size:84px;background:#e9e1d6}.k1 span{background:#d8cfe6!important}.k2 span{background:#f1d9cf!important}.k3 span{background:#d3e0d3!important}
+.bq-card em{font-style:normal;font-size:22px}.bq-card b{font-size:19px}
+.sz{display:flex;gap:6px}.szb{border:1px solid #111;background:none;width:34px;height:34px;font:600 13px Outfit;cursor:pointer}.szb.on{background:#111;color:#fff}
+.bq-card>button:last-child{border:0;background:#111;color:#fff;padding:12px;font:600 14px Outfit;cursor:pointer;letter-spacing:1px}
+.t-boda{--bg:#fbf6ee;--ink:#4a3a2a;--muted:#8a7660;--ac:#b8924a;--glass:rgba(255,255,255,.6);--glass-b:rgba(184,146,74,.4);background:radial-gradient(circle at 50% 0,#fff,#fbf6ee 60%);font:500 21px 'Cormorant Garamond',serif}
+.bd{max-width:640px;margin:20px auto;text-align:center;padding:40px 22px;border:1px solid #b8924a;outline:6px double #e6d3ab;outline-offset:-14px}
+.bd h1{font:400 clamp(64px,14vw,110px) 'Great Vibes',cursive;color:#b8924a;line-height:1.1;margin:8px 0}
+.t-boda .cd div,.t-xv .cd div{background:none;box-shadow:none;backdrop-filter:none;border:0;border-right:1px solid #b8924a;border-radius:0}.t-boda .cd b{font-size:40px}
+.bd-tl{border-left:1px solid #b8924a;margin:26px auto;padding-left:26px;text-align:left;width:min(320px,90%)}.bd-tl div{position:relative;padding:10px 0;font-size:24px}.bd-tl div::before{content:'';position:absolute;left:-32px;top:19px;width:11px;height:11px;border-radius:50%;background:#b8924a}
+.t-barberia{--bg:#14161a;--ink:#f3f3f3;--muted:#9aa3ad;--ac:#d6283b;--glass:rgba(255,255,255,.08);--glass-b:rgba(255,255,255,.2);background:#14161a;font:400 22px 'Bebas Neue',Outfit,sans-serif;letter-spacing:1px}
+.br-hero{display:flex;gap:26px;align-items:center;padding:30px 0}
+.pole{flex:none;width:90px;height:min(60vw,300px);border-radius:45px;border:5px solid #e8e8e8;background:repeating-linear-gradient(135deg,#d6283b 0 18px,#fff 18px 36px,#1f5fbf 36px 54px,#fff 54px 72px);background-size:101.82px 101.82px;animation:spin 2s linear infinite}
+@keyframes spin{to{background-position:0 101.82px}}
+.br-hero h1{font-weight:400;font-size:clamp(60px,12vw,120px);line-height:.9}.br-hero h1 em{color:var(--ac);font-style:normal}.br-hero p{font-size:26px;color:var(--muted)}
+.br-menu{border:2px dashed #555;padding:8px 24px}.pr-row{display:flex;justify-content:space-between;font-size:34px;padding:10px 0;border-bottom:1px solid #333}.pr-row:last-child{border:0}.pr-row b{color:var(--ac);font-weight:400}
+.sl{padding:12px 20px;border:2px solid #444;background:transparent;color:#fff;font:inherit;cursor:pointer;margin:0 8px 8px 0}.sl.on{background:var(--ac);border-color:var(--ac)}
+.t-pasteleria{--bg:#fff3f6;--ink:#5a2a3c;--muted:#9c6a7e;--ac:#ec5f8a;--glass:rgba(255,255,255,.75);--glass-b:rgba(236,95,138,.25);background:linear-gradient(#fff3f6,#ffe0ea);font-family:Fredoka,Outfit,sans-serif}
+.ps-hero{text-align:center;padding:50px 0 20px;position:relative;overflow:hidden}.ps-hero h1{font-size:clamp(46px,10vw,90px);line-height:1;color:#ec5f8a}.ps-hero p{font-size:20px;color:var(--muted);margin-top:8px;position:relative}.ps-hero h1{position:relative}
+.sp{position:absolute;top:-30px;width:9px;height:24px;border-radius:6px;animation:fall 6s linear infinite}@keyframes fall{to{top:105%}}
+.ps-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 6px 30px}
+.ps-card{flex:0 0 240px;scroll-snap-align:center;background:#fff;border-radius:60% 40% 55% 45%/45% 55% 45% 55%;padding:38px 24px;text-align:center;box-shadow:0 14px 30px rgba(236,95,138,.25);animation:wob 6s ease-in-out infinite;display:grid;gap:6px;justify-items:center}
+.ps-card span{font-size:74px}.ps-card b{font-size:21px}.ps-card em{font-style:normal;font-size:24px;font-weight:700;color:#ec5f8a}
+@keyframes wob{50%{border-radius:45% 55% 40% 60%/55% 45% 55% 45%}}
+.t-xv{--bg:#1a0f2e;--ink:#f6eaff;--muted:#bba3d9;--ac:#e9b84c;--on:#2a1240;--glass:rgba(255,255,255,.08);--glass-b:rgba(233,184,76,.4);background:radial-gradient(circle at 50% 10%,#5a2a8a,#1a0f2e 65%);font-family:Cinzel,serif}
+.xv{text-align:center;padding:36px 10px;position:relative;overflow:hidden}.xv>*{position:relative}
+.xv .cr{font-size:84px;filter:drop-shadow(0 0 20px #e9b84c)}
+.xv h1{font:700 clamp(40px,9vw,84px) Cinzel;background:linear-gradient(90deg,#e9b84c,#fff3c4,#e9b84c);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.st{position:absolute!important;width:4px;height:4px;border-radius:50%;background:#fff;animation:tw 2.5s infinite}@keyframes tw{50%{opacity:.1;transform:scale(2)}}
+.t-xv .cd div{width:96px;height:96px;display:grid;place-content:center;border:3px solid #e9b84c;border-radius:50%;box-shadow:0 0 18px rgba(233,184,76,.5)}.t-xv .cd b{font-size:28px}
+.xv-tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:26px 0}.xv-tl div{border:1px solid #e9b84c;border-radius:20px;padding:16px;background:var(--glass)}
+.t-java{--bg:#2b2b2b;--ink:#d8dbe0;--muted:#8f979f;--ac:#f89820;--on:#1b1b1b;--glass:rgba(255,255,255,.07);--glass-b:rgba(255,255,255,.16);background:#1e1f22;font-family:Outfit,sans-serif}
+.jv h1,.cp h1,.py h1{font-size:clamp(30px,6vw,52px);margin:26px 0 6px}.jv p{color:var(--muted);margin-bottom:18px}
+.ide{border-radius:12px;overflow:hidden;border:1px solid #3c3f41;background:#2b2b2b}.ide-bar{background:#3c3f41;padding:8px 14px;display:flex;gap:7px;align-items:center;font-size:13px;color:#aaa}.ide-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f56}.ide-bar i:nth-child(2){background:#ffbd2e}.ide-bar i:nth-child(3){background:#27c93f}
+.ide pre{margin:0;padding:16px;overflow:auto;line-height:1.6;font:15px 'Courier New',monospace;counter-reset:l;color:#a9b7c6}.ide pre span{display:block;white-space:pre}.ide pre span::before{counter-increment:l;content:counter(l);display:inline-block;width:28px;color:#606366;margin-right:14px;text-align:right}.ide em{font-style:normal}
+.jk{color:#cc7832}.jt{color:#6a8759}.jn{color:#6897bb}.jm{color:#ffc66d}
+.out{background:#1b1b1b;color:#a9b7c6;min-height:150px;padding:16px;margin-top:14px;border-radius:12px;white-space:pre-wrap;font:15px/1.55 'Courier New',monospace}
+.t-cpp{--bg:#008080;--ink:#111;--muted:#333;--ac:#000080;--on:#fff;--glass:#c0c0c0;--glass-b:#fff;background:#008080;font:400 15px Tahoma,Outfit,sans-serif}
+.cp h1{color:#fff;text-align:center}.win{background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px 0 #000;max-width:560px;margin:22px auto;color:#000}
+.wt{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:5px 8px;font-weight:700;display:flex;justify-content:space-between}.wb{padding:14px}
+.win input,.win select{width:auto;max-width:130px;border:2px inset #fff;background:#fff;border-radius:0;padding:6px;margin:0 6px 8px 0;color:#000}
+.con{background:#000;color:#c0c0c0;font:16px 'Courier New',monospace;padding:12px;min-height:130px;white-space:pre-wrap}
+.win .btn{border-radius:0;background:#c0c0c0!important;color:#000!important;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:none!important;padding:6px 16px;font:inherit}
+.t-escolar{--bg:#fffdf3;--ink:#1f3a63;--muted:#5d6f8c;--ac:#d94b4b;--glass:rgba(255,255,255,.85);--glass-b:rgba(31,58,99,.2);background:#fffdf3;font:500 22px Caveat,Outfit,sans-serif}
+.nb{max-width:720px;margin:34px auto 20px;background:repeating-linear-gradient(#fffdf3 0 31px,#bcd3ee 31px 32px);padding:32px 24px 32px 80px;position:relative;border-radius:8px;box-shadow:0 14px 30px rgba(0,0,0,.15);line-height:32px}
+.nb::before{content:'';position:absolute;left:58px;top:0;bottom:0;width:2px;background:#e88}.nb h1{font-size:46px;line-height:44px;margin-bottom:8px}.nb h2{font-size:30px;margin:0;line-height:40px}
+.ck{display:flex;gap:10px;align-items:center;cursor:pointer;border:0;background:none;font:inherit;color:inherit;text-align:left;padding:0;width:100%;line-height:32px}.ck b{width:24px;height:24px;border:2px solid var(--ink);border-radius:5px;display:grid;place-items:center;font-size:20px;color:transparent;flex:none}.ck.on b{background:var(--ac);border-color:var(--ac);color:#fff}.ck.on span{text-decoration:line-through;opacity:.6}
+.bar{height:14px;border:2px solid var(--ink);border-radius:10px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--ac);transition:width .4s}
+.note{position:absolute;right:-10px;top:-20px;background:#ffe36b;padding:12px 16px;transform:rotate(4deg);box-shadow:0 6px 12px rgba(0,0,0,.2);line-height:24px;font-size:20px;max-width:180px}
+.t-python{--bg:#f3f7fc;--ink:#14263f;--muted:#5d6f8c;--ac:#306998;--glass:rgba(255,255,255,.8);--glass-b:rgba(48,105,152,.2);background:linear-gradient(#f3f7fc,#e3edf8);font-family:Outfit,sans-serif}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}.kp div{padding:16px;border-radius:20px;background:#fff;box-shadow:var(--shadow)}.kp b{display:block;font-size:30px;color:#306998}.kp span{color:var(--muted);font-size:14px}
+.ch{display:flex;align-items:flex-end;gap:12px;height:200px;background:#fff;border-radius:22px;padding:20px 20px 36px;box-shadow:var(--shadow);margin-bottom:20px}.ch i{flex:1;background:linear-gradient(#ffd43b,#f2b705);border-radius:8px 8px 0 0;height:8%;transition:height .8s cubic-bezier(.2,.9,.3,1.2);position:relative}.ch i::after{content:attr(data-l);position:absolute;bottom:-24px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted)}
+.card .from{display:inline-block;margin-top:10px;font-style:normal;font-weight:700;font-size:14px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.7)}
+.xt{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}.xt span{padding:10px 18px;border-radius:999px;font-weight:600}.note2{text-align:center;color:var(--muted);margin-top:18px;font-size:15px}
+@media(max-width:860px){.cf-hero{grid-template-columns:1fr}.bq-grid{grid-template-columns:1fr 1fr}.bq-card:nth-child(even){margin-top:0}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.2 14c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.2-.7-2.700-1.100-4.400-3.900-4.600-4.100-.1-.2-1.100-1.400-1.100-2.700 0-1.300.7-1.900.9-2.200.2-.3.5-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.300 0 .500l-.3.400-.4.400c-.1.100-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.100.4.100.6-.1l.8-1c.2-.3.4-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400Z"/></symbol>
+<symbol id="lg" viewBox="0 0 64 64"><path d="M32 4 56 18v28L32 60 8 46V18Z" fill="#14a88f"/><path d="M32 4 56 18 32 32 8 18Z" fill="#7bd45a"/><path d="M8 18 32 32v28L8 46Z" fill="#1d8fd1"/><path d="M56 18 32 32v28l24-14Z" fill="#0b7d77"/><path d="M32 20 44 27v14L32 48 20 41V27Z" fill="#fff" opacity=".92"/><path d="M32 26 38 29.500v7L32 40 26 36.500v-7Z" fill="#f6a23c"/></symbol>
+</defs></svg>
+
+<header class="glass">
+<a class="logo" href="#inicio" aria-label="DiseñoWeb MX inicio"><svg><use href="#lg"/></svg>Diseño<b>Web</b> MX</a>
+<nav><a href="#servicios">Servicios</a><a href="#precios">Precios</a><a href="#portafolio">Portafolio</a><a href="#contacto">Contacto</a></nav>
+<a class="btn cot wa-link" href="#" style="padding:8px 16px;font-size:15px">🇲🇽 Cotizar <svg><use href="#wa"/></svg></a>
+<button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</header>
+<div class="sheet glass" id="sheet"><a href="#servicios">Servicios</a><a href="#precios">Planes y precios</a><a href="#portafolio">Portafolio</a><a href="#programas">Programas y trabajos</a><a href="#proceso">Cómo trabajamos</a><a href="#preguntas">Preguntas frecuentes</a><a href="#contacto">Contacto</a><a class="btn wa-link" href="#">Cotizar por WhatsApp</a></div>
+
+<main id="inicio">
+<div class="hero">
+<i class="blob" style="width:40px;height:40px;background:#e8f4ff;left:8%;top:62%"></i>
+<i class="blob" style="width:34px;height:34px;background:#0e8a80;left:12%;top:74%;animation-delay:-2s"></i>
+<i class="blob" style="width:30px;height:30px;background:#fcc15a;right:18%;top:58%;animation-delay:-4s"></i>
+<i class="blob" style="width:16px;height:16px;background:#0e8aa0;right:12%;top:36%;animation-delay:-1s"></i>
+<svg class='hlogo' role='img' aria-label='Logo DiseñoWeb MX'><use href='#lg'/></svg>
+<h1>Te creo tu página web</h1>
+<p>Páginas web, tiendas, invitaciones y lo que necesites</p>
+<a class="btn wa-link" href="#"><svg><use href="#wa"/></svg>Cotizar mi página por WhatsApp</a>
+<div class="checks">
+<span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m7 12 3.500 3.500L17 9"/></svg>Soporte en español</span>
+<span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m7 12 3.500 3.500L17 9"/></svg>Entrega rápida</span>
+<span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m7 12 3.500 3.500L17 9"/></svg>Pagos seguros</span>
+</div></div>
+
+<section id="servicios"><h2>Servicios</h2>
+<div class="grid4">
+<button class="card c1" data-s="0"><svg viewBox="0 0 48 48"><path d="M6 18 10 6h28l4 12M8 18v22h32V18M6 18c0 4 6 4 6 0s6 4 6 0 6 4 6 0 6 4 6 0 6 4 6 0M14 40V28h8v12M28 28h8v8h-8z"/></svg><h3>Página para Negocio</h3><p>Sitios modernos que convierten visitas en clientes</p></button>
+<button class="card c2" data-s="1"><svg viewBox="0 0 48 48"><path d="M4 6h6l5 24h22l5-17H12"/><circle cx="19" cy="38" r="3"/><circle cx="35" cy="38" r="3"/></svg><h3>Tienda en línea</h3><p>E-commerce simple, pagos y envíos fáciles</p></button>
+<button class="card c3" data-s="2"><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="4"/><circle cx="17" cy="19" r="3"/><path d="m6 34 12-10 9 8 6-5 9 8"/></svg><h3>Portafolio</h3><p>Muestra tu trabajo con diseño elegante</p></button>
+<button class="card c4" data-s="3"><svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3"/><path d="m6 14 18 13 18-13M6 38l14-12m22 12L28 26"/></svg><h3>Invitación digital</h3><p>Bodas, eventos y celebraciones personalizadas</p></button>
+<button class='card c5' data-s='4'><svg viewBox='0 0 48 48'><path d='M10 20h24v10a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8ZM34 22h3a4 4 0 0 1 0 8h-3M16 8c0 3 3 3 3 6M24 8c0 3 3 3 3 6'/></svg><h3>Programas en Java</h3><p>Consola, ventanas y proyectos de programación</p></button>
+<button class='card c6' data-s='5'><svg viewBox='0 0 48 48'><path d='m18 14-10 10 10 10M30 14l10 10-10 10M27 10l-6 28'/></svg><h3>Programas en C / C++</h3><p>Listos para Dev-C++ y otros compiladores</p></button>
+<button class='card c7' data-s='6'><svg viewBox='0 0 48 48'><path d='m4 18 20-9 20 9-20 9ZM12 22v10c0 4 24 4 24 0V22M44 18v12'/></svg><h3>Trabajos escolares</h3><p>Proyectos, documentos y presentaciones</p></button>
+<button class='card c8' data-s='7'><svg viewBox='0 0 48 48'><path d='M24 6v8M24 34v8M6 24h8M34 24h8M12 12l6 6M30 30l6 6M36 12l-6 6M18 30l-6 6'/></svg><h3>Otros proyectos</h3><p>Python, bases de datos, apps y lo que necesites</p></button>
+</div></section>
+
+<section id="precios"><h2>Planes y precios</h2>
+<div class="plans">
+<div class="plan glass"><h3>Básico</h3><div class="price">MX$3,500</div><ul><li>Página de 1 sección</li><li>Diseño responsivo</li><li>Entrega en 5 días</li></ul><button class="btn ghost" data-plan="Básico">Elegir plan</button></div>
+<div class="plan glass pop"><span class="tag">Más popular</span><h3>Negocio</h3><div class="price">MX$6,900</div><ul><li>Hasta 5 secciones</li><li>Tienda o formulario</li><li>SEO básico + WhatsApp</li></ul><button class="btn" data-plan="Negocio">Elegir plan</button></div>
+<div class="plan glass"><h3>Premium</h3><div class="price">MX$12,000</div><ul><li>Tienda completa</li><li>Diseño personalizado</li><li>Soporte 1 mes</li></ul><button class="btn ghost" data-plan="Premium">Elegir plan</button></div>
+</div></section>
+
+<section id='programas'><h2>Programas y trabajos escolares</h2><div class='plans'><div class='plan glass'><h3>Sencillo</h3><div class='price'>$150 a $350</div><ul><li>Ejercicio o programa de consola</li><li>Java, C o C++ (Dev-C++)</li><li>Código comentado</li><li>Entrega en 24 a 48 h</li></ul><button class='btn ghost' data-ask='Sencillo'>Pedir</button></div><div class='plan glass pop'><span class='tag'>Más pedido</span><h3>Intermedio</h3><div class='price'>$400 a $900</div><ul><li>Varias clases o funciones</li><li>Menú, arreglos y archivos</li><li>Explicación del código</li><li>1 corrección incluida</li></ul><button class='btn' data-ask='Intermedio'>Pedir</button></div><div class='plan glass'><h3>Proyecto completo</h3><div class='price'>Desde $1,200</div><ul><li>Interfaz gráfica o base de datos</li><li>Documentación y manual</li><li>Presentación del proyecto</li><li>2 correcciones incluidas</li></ul><button class='btn ghost' data-ask='Proyecto completo'>Pedir</button></div></div>
+<div class='xt'><span class='glass'>Tarea o documento corto desde $100</span><span class='glass'>Trabajo escolar mediano $350</span><span class='glass'>Proyecto final con presentación $800</span><span class='glass'>Python, scripts y automatizaciones desde $500</span></div>
+<h2 style='margin-top:44px'>Extras para tu página</h2><div class='xt'><span class='glass'>Dominio y hosting configurados $500</span><span class='glass'>Mantenimiento mensual $350</span><span class='glass'>Logo $600</span><span class='glass'>Cambios extra $150 c/u</span></div>
+<p class='note2'>Precios en pesos mexicanos (MXN). Trabajo urgente: +30%. El dominio y el hosting no están incluidos en los planes de páginas.</p></section>
+<section id="portafolio"><h2>Portafolio</h2>
+<div class="port" id="port">
+<button class="work glass" data-w="Cafetería Local"><div class="shot" style="background:linear-gradient(135deg,#e9d3b4,#b98a5c)">☕</div><div class="t"><b>Cafetería Local</b><small>Página web</small></div></button>
+<button class="work glass" data-w="Boutique Online"><div class="shot" style="background:linear-gradient(135deg,#d9d2e9,#8b7aa8)">👗</div><div class="t"><b>Boutique Online</b><small>Tienda</small></div></button>
+<button class="work glass" data-w="Boda"><div class="shot" style="background:linear-gradient(135deg,#fbeee4,#e8c6b4)">💍</div><div class="t"><b>Boda</b><small>Invitación digital</small></div></button>
+</div></section>
+
+<section id='proceso'><h2>Así trabajamos</h2><div class='steps'><div class='step glass'><i>1</i><b>Me cuentas tu idea</b><p>Por WhatsApp o con el formulario, sin compromiso.</p></div><div class='step glass'><i>2</i><b>Recibes una propuesta</b><p>Diseño, precio y tiempo de entrega claros.</p></div><div class='step glass'><i>3</i><b>Ajustamos juntos</b><p>Revisas tu página y pides los cambios necesarios.</p></div><div class='step glass'><i>4</i><b>Publicamos</b><p>Tu página sale en línea y te acompaño con soporte.</p></div></div></section>
+<section id='testimonios'><h2>Lo que dicen mis clientes</h2><div class='tests'><div class='test glass'>“Mis clientes ya me encuentran y piden por WhatsApp sin complicarse.”<b>Carla · Cafetería</b></div><div class='test glass'>“Mi tienda quedó bonita y fácil de usar. Subo mis productos yo sola.”<b>Mariana · Boutique</b></div><div class='test glass'>“La invitación gustó muchísimo; todos confirmaron desde el celular.”<b>Ana y Luis · Boda</b></div></div></section>
+<section id='preguntas'><h2>Preguntas frecuentes</h2><details><summary>¿Cuánto tarda mi página?</summary><p>El plan Básico se entrega en 5 días. Los demás dependen del tamaño del proyecto; te doy una fecha clara en la cotización.</p></details><details><summary>¿Cómo pago?</summary><p>Por transferencia, depósito o tarjeta. Normalmente se pide un anticipo para empezar y el resto al entregar.</p></details><details><summary>¿Puedo pedir cambios?</summary><p>Sí. Ajustamos el diseño contigo antes de publicar.</p></details><details><summary>¿Mi página se ve bien en celular?</summary><p>Sí, todas se diseñan para celular, tableta y computadora.</p></details><details><summary>¿Hacen programas en Java, C++ o trabajos escolares?</summary><p>Sí. Hago programas en Java, C y C++ (compatibles con Dev-C++), trabajos escolares y otros proyectos. Cuéntame qué necesitas y la fecha de entrega para cotizarte.</p></details><details><summary>¿Hacen tiendas con pagos y envíos?</summary><p>Sí, con el plan Premium: catálogo, carrito, pagos y envíos.</p></details></section>
+<section id="contacto"><h2>Contacto</h2>
+<div class="contact">
+<div class="box glass"><form id="f">
+<label>Nombre<input id="nm" required placeholder="Tu nombre"></label>
+<label>¿Qué necesitas?<select id="nd"><option>Página para Negocio</option><option>Tienda en línea</option><option>Portafolio</option><option>Invitación digital</option><option>Programa en Java</option><option>Programa en C / C++</option><option>Trabajo escolar</option><option>Otro</option></select></label>
+<label>Plan<select id="pl"><option value="">Aún no sé</option><option>Básico</option><option>Negocio</option><option>Premium</option></select></label>
+<label>Mensaje<textarea id="ms" rows="3" placeholder="Cuéntame tu idea"></textarea></label>
+<button class="btn" type="submit">Enviar mensaje ➤</button></form></div>
+<div class="box wa"><h3>¿Prefieres WhatsApp?</h3><p>Respuesta en menos de 2 horas, de 9am a 7pm CDMX</p><a class="btn wa-link" href="#"><svg><use href="#wa"/></svg>Escribir por WhatsApp</a></div>
+</div></section>
+</main>
+<footer><svg style='width:34px;height:34px;display:block;margin:0 auto 8px'><use href='#lg'/></svg><a href='#' id='pv' style='color:inherit'>Aviso de privacidad</a> · © 2026 DiseñoWeb MX · Hecho en México · <a href="mailto:hola@diseñowebmx.com" style="color:inherit">hola@diseñowebmx.com</a></footer>
+
+<nav class="dock glass" aria-label="Navegación">
+<a href="#inicio" class="on"><span>🏠</span>Inicio</a><a href="#servicios"><span>✨</span>Servicios</a><a href="#precios"><span>💳</span>Precios</a><a href="#portafolio"><span>🖼️</span>Trabajos</a><a href="#contacto"><span>💬</span>Contacto</a>
+</nav>
+
+<div class='proj' id='proj'></div>
+<div class="modal" id="modal"><div class="panel glass"><h3 id="mt"></h3><p id="mp"></p><ul id="ml"></ul><div class="row"><a class="btn wa-link" href="#">WhatsApp</a><button class="btn ghost" id="mc">Cerrar</button></div></div></div>
+<div class="toast glass" id="toast"></div>
+
+<script>
+var NUM="525658575619"; // ← cambia por tu número de WhatsApp (código de país + número)
+var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
+function wa(t){return "https://wa.me/"+NUM+"?text="+encodeURIComponent(t||"Hola, quiero cotizar mi página web")}
+$$(".wa-link").forEach(function(a){a.href=wa();a.target="_blank";a.rel="noopener"});
+var b=$("#burger"),sh=$("#sheet");
+b.onclick=function(){b.classList.toggle("open");sh.classList.toggle("open")};
+$$("#sheet a").forEach(function(a){a.addEventListener("click",function(){b.classList.remove("open");sh.classList.remove("open")})});
+var S=[
+["Página para Negocio","Un sitio profesional que presenta tu negocio y atrae clientes desde Google y redes.",["Diseño a tu medida","Botón directo a WhatsApp","Mapa, horarios y galería","Listo para celular"],"Básico"],
+["Tienda en línea","Vende 24/7 con catálogo, carrito, pagos y envíos fáciles de administrar.",["Catálogo de productos","Pagos con tarjeta, OXXO y transferencia","Envíos nacionales","Panel para editar precios"],"Premium"],
+["Portafolio","Muestra tus proyectos con una galería elegante que genera confianza.",["Galería con filtros","Casos de éxito","Contacto integrado","Carga rápida"],"Básico"],
+["Invitación digital","Bodas, XV años y eventos con música, mapa y confirmación de asistencia.",["Cuenta regresiva","Mapa del evento","Confirmación por WhatsApp","Se comparte con un link"],"Básico"],
+["Programas en Java","Desarrollo de programas en Java: consola, ventanas (Swing), programación orientada a objetos y bases de datos.",["Programas de consola o con interfaz gráfica","Programación orientada a objetos","Código ordenado y comentado","Explicación para que lo entiendas"],"Básico"],
+["Programas en C / C++","Programas en C y C++ listos para abrir en Dev-C++ u otros compiladores.",["Ejercicios, algoritmos y proyectos","Estructuras de datos y archivos","Código comentado","Compatible con Dev-C++"],"Básico"],
+["Trabajos escolares","Proyectos, tareas, documentos y presentaciones para secundaria, prepa o universidad.",["Proyectos de programación","Documentos y reportes","Presentaciones","Entrega en la fecha acordada"],"Básico"],
+["Otros proyectos","¿Necesitas otra cosa? Scripts, Python, bases de datos, apps o automatizaciones: cuéntame y lo cotizamos.",["Python, JavaScript y más","Bases de datos","Automatizaciones","Cotización según tu proyecto"],"Básico"]];
+var W={"Cafetería Local":"Página con menú, ubicación y pedidos por WhatsApp.","Boutique Online":"Tienda con catálogo, carrito y pagos seguros.","Boda":"Invitación digital con mapa, música y confirmación de asistencia."};
+var cur="";
+function openM(t,p,l,m){$("#mt").textContent=t;$("#mp").textContent=p;$("#ml").innerHTML=(l||[]).map(function(x){return "<li>"+x+"</li>"}).join("");cur=m||t;$("#modal .wa-link").href=wa("Hola, me interesa: "+cur);$("#modal").classList.add("open")}
+function close(){$("#modal").classList.remove("open")}
+$$(".card").forEach(function(c){c.onclick=function(){var s=S[+c.dataset.s];openM(s[0],s[1],s[2].concat(['Precio: '+PR[+c.dataset.s]]));$("#mc").dataset.plan=s[3]}});
+$$(".work").forEach(function(c){c.onclick=function(){openM(c.dataset.w,W[c.dataset.w],["Proyecto de ejemplo","Diseño responsivo"],"Proyecto "+c.dataset.w)}});
+var P=[{id:'cafeteria',e:'☕',t:'Cafetería Local',g:'Página web',k:'web',c:['#e9d3b4','#b98a5c'],h:'Café de especialidad y desayunos caseros',loc:'📍 Av. Hidalgo 123 · Lun a Sáb 7am–8pm · Pedidos por WhatsApp',items:[['Café americano','$35','☕'],['Capuchino','$55','🥛'],['Pan de elote','$45','🍞'],['Chilaquiles','$95','🍳']]},{id:'boutique',e:'👗',t:'Boutique Online',g:'Tienda',k:'tienda',c:['#d9d2e9','#8b7aa8'],h:'Moda con envíos a todo México',loc:'🚚 Envíos a todo el país · Pagos con tarjeta y transferencia',items:[['Vestido floral','$699','👗'],['Bolsa de mano','$450','👜'],['Zapatillas','$890','👠'],['Blusa de lino','$380','👚']]},{id:'boda',e:'💍',t:'Boda Ana y Luis',g:'Invitación digital',k:'invitacion',c:['#fbeee4','#e8c6b4'],h:'20 de marzo de 2027 · Con mucho amor te invitamos a celebrar',dt:'2027-03-20T17:00:00',loc:'📍 Jardín Las Palmas, Cuernavaca',it:[['5:00 pm','Ceremonia'],['7:00 pm','Cena y recepción'],['9:00 pm','Baile']]},{id:'barberia',e:'💈',t:'Barbería Clásica',g:'Página web',k:'web',c:['#cfd8e3','#5b7088'],h:'Cortes con estilo. Agenda tu cita en un mensaje',loc:'📍 Calle Reforma 45 · Mar a Dom 10am–8pm',items:[['Corte clásico','$120','✂️'],['Barba','$80','🧔'],['Corte + barba','$180','💈'],['Cejas','$40','✨']]},{id:'pasteleria',e:'🎂',t:'Pastelería Dulce',g:'Tienda',k:'tienda',c:['#fde0e6','#f2a3b8'],h:'Pasteles y postres hechos por encargo',loc:'🚚 Entrega local el mismo día · Pedidos con 48 h de anticipación',items:[['Pastel de chocolate','$450','🎂'],['Cupcakes x6','$180','🧁'],['Galletas x12','$150','🍪'],['Pay de limón','$320','🥧']]},{id:'xv',e:'👑',t:'XV Años Valeria',g:'Invitación digital',k:'invitacion',c:['#e6dcf7','#b79cdf'],h:'10 de abril de 2027 · Acompáñame en mi noche especial',dt:'2027-04-10T19:00:00',loc:'📍 Salón Jacarandas, Puebla',it:[['7:00 pm','Misa'],['8:30 pm','Vals y cena'],['10:00 pm','Fiesta']]},{id:'java',e:'💻',t:'Sistema de Inventario',g:'Programa en Java',k:'java',c:['#f89820','#5382a1'],h:'Programa en Java con arreglos, ciclos y salida en consola'},{id:'cpp',e:'⌨️',t:'Calculadora en C++',g:'Programa en Dev-C++',k:'cpp',c:['#c0c0c0','#008080'],h:'Calculadora en C++ lista para abrir en Dev-C++'},{id:'escolar',e:'📚',t:'Proyecto de Biología',g:'Trabajo escolar',k:'escolar',c:['#fff3c4','#bcd3ee'],h:'Trabajo completo con portada, desarrollo, conclusiones y presentación'},{id:'python',e:'📊',t:'Reporte Automático',g:'Python y otros proyectos',k:'python',c:['#ffd43b','#306998'],h:'Script que convierte tu Excel en un reporte en segundos'}];
+var INC={web:['Menú o servicios','Mapa y horarios','Botón de WhatsApp','Galería de fotos'],tienda:['Catálogo','Carrito de compras','Pagos seguros','Envíos'],invitacion:['Cuenta regresiva','Mapa del lugar','Confirmación de asistencia','Se comparte con un link']};
+var OUT={web:'Tus clientes te encuentran, ven tus precios y te escriben directo por WhatsApp.',tienda:'Vendes a cualquier hora y administras tus productos fácilmente.',invitacion:'Tus invitados lo reciben por WhatsApp y confirman desde su celular.'};
+$('#port').innerHTML=P.map(function(p){return `<button class='work glass' data-id='${p.id}'><div class='shot' style='background:linear-gradient(135deg,${p.c[0]},${p.c[1]})'>${p.e}</div><div class='t'><b>${p.t}</b><small>${p.g}</small></div></button>`}).join('');
+$('#port').onclick=function(e){var b=e.target.closest('.work');if(b)location.hash='proyecto-'+b.dataset.id};
+var PR=['Desde $3,500 MXN (plan Básico) · Negocio $6,900','Desde $6,900 MXN (plan Negocio) · tienda completa $12,000','Desde $3,500 MXN','Desde $900 MXN · con música y galería $1,500','Desde $150 MXN · intermedio $400 · proyecto completo $1,200','Desde $150 MXN · intermedio $400 · proyecto completo $1,200','Desde $100 MXN · trabajo mediano $350 · proyecto final $800','Desde $500 MXN, según el proyecto'],PS=['$3,500','$6,900','$3,500','$900','$150','$150','$100','$500'];
+$$('.card').forEach(function(c,i){var e=document.createElement('em');e.className='from';e.textContent='Desde '+PS[i];c.appendChild(e)});
+var tmr,cart=0,pj=$('#proj');
+function tick(dt){var d=Math.max(0,new Date(dt)-new Date()),v=[[Math.floor(d/864e5),'días'],[Math.floor(d%864e5/36e5),'horas'],[Math.floor(d%36e5/6e4),'min'],[Math.floor(d%6e4/1e3),'seg']],e=$('#cd');if(e)e.innerHTML=v.map(function(x){return `<div class='glass'><b>${x[0]}</b>${x[1]}</div>`}).join('')}
+function showP(id){var i=P.findIndex(function(p){return p.id===id});if(i<0)return false;var p=P[i],n=P[(i+1)%P.length];cart=0;
+pj.className='proj open t-'+p.id;
+pj.innerHTML=`<div class='pbar glass'><button class='btn ghost' data-go='portafolio'>← Portafolio</button><b>${p.t}</b><span id='cc'></span></div>${RN[id](p)}<div class='pw'><div class='cta glass'><h3>¿Quieres una página así?</h3><p style='color:var(--muted)'>Proyecto de demostración. Te preparo la tuya a tu medida.</p><div class='row'><a class='btn' href='${wa('Hola, me gustó el proyecto '+p.t+' y quiero una página así')}' target='_blank' rel='noopener'>Cotizar por WhatsApp</a><button class='btn ghost' data-go='precios'>Ver planes</button><button class='btn ghost' data-next='${n.id}'>Siguiente: ${n.t}</button></div></div></div>`;
+pj.scrollTop=0;document.body.style.overflow='hidden';clearInterval(tmr);if(p.dt){tick(p.dt);tmr=setInterval(function(){tick(p.dt)},1000)}return true}
+var rsvp=`<div class='chips' style='justify-content:center'><button class='btn' data-rsvp='1'>Confirmo mi asistencia</button><button class='btn ghost' data-rsvp='0'>No podré ir</button></div>`;
+var RN={
+cafeteria:p=>`<div class='pw'><div class='cf-hero'><div><h1>${p.t}</h1><p>${p.h}</p><a class='btn' href='${wa('Hola, quiero hacer un pedido')}' target='_blank' rel='noopener'>Pedir por WhatsApp</a></div><div class='cup'>☕<i></i><i></i><i></i></div></div><div class='cf-board'><h2>Menú del día</h2>${p.items.map(x=>`<div class='cf-row'><span>${x[2]} ${x[0]}</span><u></u><b>${x[1]}</b></div>`).join('')}</div><div class='cf-info'>${p.loc}</div></div>`,
+boutique:p=>{var t='ENVÍOS A TODO MÉXICO ✦ NUEVA COLECCIÓN ✦ PAGO SEGURO ✦ ';return `<div class='bq-top'><span>${t.repeat(6)}</span></div><h1 class='bq-h'>${p.t}</h1><p class='bq-s'>${p.h}</p><div class='bq-grid'>${p.items.map((x,i)=>`<div class='bq-card k${i}'><span>${x[2]}</span><b>${x[0]}</b><em>${x[1]}</em><div class='sz'><button class='szb'>S</button><button class='szb on'>M</button><button class='szb'>L</button></div><button data-add='${x[0]}'>AGREGAR A LA BOLSA</button></div>`).join('')}</div>`},
+boda:p=>`<div class='pw'><div class='bd'><p>Con mucho amor te invitamos a celebrar</p><h1>Ana & Luis</h1><p>20 de marzo de 2027</p><div class='cd' id='cd'></div><div class='bd-tl'>${p.it.map(x=>`<div><b>${x[0]}</b> · ${x[1]}</div>`).join('')}</div><p>${p.loc}</p><br>${rsvp}</div></div>`,
+barberia:p=>`<div class='pw'><div class='br-hero'><div class='pole'></div><div><h1>Barbería<br><em>Clásica</em></h1><p>${p.h}</p></div></div><div class='br-menu'>${p.items.map(x=>`<div class='pr-row'><span>${x[2]} ${x[0]}</span><b>${x[1]}</b></div>`).join('')}</div><h2>Reserva tu cita</h2><div>${['Hoy','Mañana','Viernes','Sábado'].map(d=>`<button class='sl' data-d='${d}'>${d}</button>`).join('')}</div><div>${['10:00','12:00','14:00','17:00','19:00'].map(h=>`<button class='sl' data-h='${h}'>${h}</button>`).join('')}</div><br><button class='btn' data-book>Reservar por WhatsApp</button><div class='cf-info'>${p.loc}</div></div>`,
+pasteleria:p=>`<div class='pw'><div class='ps-hero'>${Array.from({length:14},(_,i)=>`<i class='sp' style='left:${i*7+3}%;background:${['#ec5f8a','#ffcf56','#6ec9e0','#9ad87a'][i%4]};animation-delay:${-i*.7}s;transform:rotate(${i*40}deg)'></i>`).join('')}<h1>${p.t}</h1><p>${p.h}</p></div><div class='ps-row'>${p.items.map(x=>`<div class='ps-card'><span>${x[2]}</span><b>${x[0]}</b><em>${x[1]}</em><button class='btn' data-add='${x[0]}'>Pedir</button></div>`).join('')}</div><div class='cf-info'>${p.loc}</div></div>`,
+xv:p=>`<div class='pw'><div class='xv'>${Array.from({length:30},(_,i)=>`<i class='st' style='left:${(i*37)%100}%;top:${(i*53)%100}%;animation-delay:${-i*.3}s'></i>`).join('')}<div class='cr'>👑</div><p>Mis XV años</p><h1>Valeria</h1><p>10 de abril de 2027</p><br><div class='cd' id='cd'></div><div class='xv-tl'>${p.it.map(x=>`<div><b>${x[0]}</b><br>${x[1]}</div>`).join('')}</div><p>${p.loc}</p><br>${rsvp}</div></div>`};
+var JL=[`<em class='jk'>public class</em> Inventario {`,`    <em class='jk'>public static void</em> <em class='jm'>main</em>(String[] args) {`,`        String[] producto = {<em class='jt'>&quot;Cuaderno&quot;</em>, <em class='jt'>&quot;Lápiz&quot;</em>, <em class='jt'>&quot;Mochila&quot;</em>};`,`        <em class='jk'>double</em>[] precio = {<em class='jn'>45.5</em>, <em class='jn'>8.0</em>, <em class='jn'>320.0</em>};`,`        <em class='jk'>double</em> total = <em class='jn'>0</em>;`,`        <em class='jk'>for</em> (<em class='jk'>int</em> i = <em class='jn'>0</em>; i &lt; producto.length; i++) {`,`            System.out.<em class='jm'>println</em>(producto[i] + <em class='jt'>&quot; - $&quot;</em> + precio[i]);`,`            total += precio[i];`,`        }`,`        System.out.<em class='jm'>println</em>(<em class='jt'>&quot;Total: $&quot;</em> + total);`,`    }`,`}`];
+Object.assign(RN,{
+java:p=>`<div class='pw jv'><h1>${p.t}</h1><p>${p.h}</p><div class='ide'><div class='ide-bar'><i></i><i></i><i></i>&nbsp; Inventario.java</div><pre>${JL.map(l=>'<span>'+l+'</span>').join('')}</pre></div><br><button class='btn' data-run>▶ Ejecutar programa</button><div class='out' id='out'>Pulsa Ejecutar programa para ver la salida.</div></div>`,
+cpp:p=>`<div class='pw cp'><h1>${p.t}</h1><div class='win'><div class='wt'><span>Dev-C++ - calculadora.cpp</span><span>_ □ ✕</span></div><div class='wb'><pre style='margin:0;font:14px Courier New,monospace;background:#fff;padding:10px;overflow:auto;border:2px inset #fff'>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+  float a, b; char op;
+  cin &gt;&gt; a &gt;&gt; op &gt;&gt; b;
+  cout &lt;&lt; a + b;
+}</pre></div></div><div class='win'><div class='wt'><span>calculadora.exe</span><span>_ □ ✕</span></div><div class='wb'><input id='na' type='number' placeholder='Numero 1'><select id='nop'><option>+</option><option>-</option><option>*</option><option>/</option></select><input id='nb' type='number' placeholder='Numero 2'><button class='btn' data-calc>Ejecutar</button><div class='con' id='con'>Escribe dos numeros y pulsa Ejecutar.</div></div></div></div>`,
+escolar:p=>{var L=['Portada con datos','Introducción','Desarrollo del tema','Conclusiones','Bibliografía','Presentación en diapositivas'];return `<div class='pw'><div class='nb'><div class='note'>Entrega: viernes 8:00 am</div><h1>${p.t}</h1><h2>Entregables</h2>${L.map((x,i)=>`<button class='ck${i<2?' on':''}'><b>✓</b><span>${x}</span></button>`).join('')}<div class='bar'><i style='width:33%'></i></div><span id='pg'>2 de 6 entregables</span><p>${p.h}</p></div></div>`},
+python:p=>`<div class='pw py'><h1>${p.t}</h1><p style='color:var(--muted)'>${p.h}</p><div class='kp'><div><b>6</b><span>reportes automáticos</span></div><div><b>4 h</b><span>ahorradas por semana</span></div><div><b>0</b><span>errores de captura</span></div></div><div class='ch'>${[['Jun',40],['Jul',62],['Ago',51],['Sep',80],['Oct',68],['Nov',92]].map(x=>`<i data-l='${x[0]}' data-h='${x[1]}'></i>`).join('')}</div><button class='btn' data-gen>Generar reporte</button><div class='info glass' style='font-family:monospace'>df = pd.read_excel('ventas.xlsx')<br>df.groupby('mes').sum().plot(kind='bar')</div></div>`});
+pj.addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var d=t.dataset;
+if('run' in d){var o=pj.querySelector('#out');if(o.dataset.b)return;o.dataset.b=1;o.textContent='';var L=['> javac Inventario.java','> java Inventario','Cuaderno - $45.5','Lápiz - $8.0','Mochila - $320.0','Total: $373.5','','Proceso terminado con código 0'];L.forEach(function(l,i){setTimeout(function(){o.textContent+=l+'\n';if(i===L.length-1)o.dataset.b=''},i*400)})}
+else if('calc' in d){var a=parseFloat(pj.querySelector('#na').value),b=parseFloat(pj.querySelector('#nb').value),op=pj.querySelector('#nop').value,c=pj.querySelector('#con');if(isNaN(a)||isNaN(b))c.textContent='Error: escribe dos numeros.';else if(op==='/'&&b===0)c.textContent='Error: no se puede dividir entre 0\n\nPress any key to continue . . .';else{var r=op==='+'?a+b:op==='-'?a-b:op==='*'?a*b:a/b;c.textContent='Numero 1: '+a+'\nNumero 2: '+b+'\nResultado: '+(+r.toFixed(4))+'\n\nPress any key to continue . . .'}}
+else if('gen' in d){[].forEach.call(pj.querySelectorAll('.ch i'),function(x){x.style.height=x.dataset.h+'%'});toast('ventas_noviembre.xlsx generado (demo)')}
+else if(t.classList.contains('ck')){t.classList.toggle('on');var n=pj.querySelectorAll('.ck.on').length,m=pj.querySelectorAll('.ck').length;pj.querySelector('.bar i').style.width=n/m*100+'%';pj.querySelector('#pg').textContent=n+' de '+m+' entregables'}});
+function hideP(){pj.classList.remove('open');clearInterval(tmr);document.body.style.overflow=''}
+pj.onclick=function(e){var t=e.target.closest('button');if(!t)return;var d=t.dataset;if(d.go)location.hash=d.go;else if(d.next)location.hash='proyecto-'+d.next;else if(d.add){cart++;$('#cc').textContent='🛒 '+cart;toast(d.add+' agregado (demo)')}else if(d.rsvp)toast(d.rsvp==='1'?'¡Gracias por confirmar! (demo)':'Te vamos a extrañar (demo)');else if('book' in d){var a=pj.querySelector('.sl.on[data-d]'),b=pj.querySelector('.sl.on[data-h]');if(!a||!b)toast('Elige día y hora');else window.open(wa('Hola, quiero reservar cita: '+a.dataset.d+' a las '+b.dataset.h),'_blank')}else if(t.classList.contains('sl')||t.classList.contains('szb')){[].forEach.call(t.parentNode.children,function(c){c.classList.remove('on')});t.classList.add('on')}};
+function route(){var m=location.hash.match(/^#proyecto-([a-z0-9-]+)$/);if(!(m&&showP(m[1])))hideP()}
+addEventListener('hashchange',route);route();
+document.addEventListener('click',function(e){var b=e.target.closest('[data-ask]');if(b)window.open(wa('Hola, me interesa el plan '+b.dataset.ask+' de programas y trabajos escolares'),'_blank')});
+$('#pv').onclick=function(e){e.preventDefault();openM('Aviso de privacidad','DiseñoWeb MX es responsable del tratamiento de tus datos personales. Solo usamos tu nombre y el mensaje que escribes en el formulario para responderte y cotizar tu proyecto.',['El formulario envía tu mensaje por WhatsApp; no lo guardamos en un servidor','No vendemos ni compartimos tus datos con terceros','No usamos cookies de rastreo','Para consultar o borrar tus datos, escríbenos por WhatsApp'],'Aviso de privacidad')};
+$("#mc").onclick=close;$("#modal").onclick=function(e){if(e.target.id==="modal")close()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("show");setTimeout(function(){e.classList.remove("show")},2400)}
+$$("[data-plan]").forEach(function(x){x.onclick=function(){$("#pl").value=x.dataset.plan;toast("Plan "+x.dataset.plan+" seleccionado");$("#contacto").scrollIntoView({behavior:"smooth"})}});
+$("#f").onsubmit=function(e){e.preventDefault();var t="Hola, soy "+$("#nm").value+". Necesito: "+$("#nd").value+(($("#pl").value)?" (Plan "+$("#pl").value+")":"")+". "+$("#ms").value;window.open(wa(t),"_blank");toast("Abriendo WhatsApp…")};
+var ids=["inicio","servicios","precios","portafolio","contacto"],links=$$(".dock a");
+window.addEventListener("scroll",function(){var y=scrollY+200,k=0;ids.forEach(function(id,i){if($("#"+id).offsetTop<=y)k=i});links.forEach(function(a,i){a.classList.toggle("on",i===k)})},{passive:true});
+</script>
+</body>
+</html>
